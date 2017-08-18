@@ -1,12 +1,12 @@
-import Ract ,{Component} from 'react'
+import React ,{Component} from 'react'
 
 export default class Home extends Component{
 	constructor(){
-		
+		super();
 	}
 	render(){
 		return (
-			<div>home</div>
+			<div class='page'>影院</div>
 		)
 	}
 }

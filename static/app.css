@@ -9,7 +9,9 @@
 	height: 50px;
 	background: #282828;
 	font-size: 14px;
+	z-index: 100;
 	color: #999999;
+	position: relative;
 }
 .icon-menu{
 	display: block;
@@ -35,6 +37,16 @@
 	height: 100%;
 	line-height: 50px;
 	font-size: 14px;
+	position: relative;
+	width: 60px;
+}
+.header-nav .city a{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
 }
 .header-nav .city span{
 	display: inline-block;
@@ -42,4 +54,86 @@
 	line-height: 50px;
 	padding: 0 5px;
 	font-size: 10px;
+}
+.icon-person{
+	float: right;
+	text-align: center;
+	line-height: 50px;
+	font-size: 10px;
+	padding: 0 20px;
+	position: relative;
+}
+.icon-person a{
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#slideMenu{
+	width: 70%;
+	background: #282828;
+	z-index: 99;
+	position: absolute;
+	left: 0;
+	top: 50px;
+	bottom: 0;
+	transition: all .3s ease-in-out;
+}
+#slideMenu a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+#slideMenu .menuList{
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	color: #999999;
+	padding-left: 20px;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+#slideMenu .menuList .icon-arrow-right{
+	float: right;
+	font-size: 14px;
+	padding: 0 10px;
+}
+
+.cover{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: rgba(0,0,0,0.4);
+	transition: .3s ;
+	z-index: 90
+}
+.page{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 50px;
+	bottom: 0;
+	background: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+.slide-appear {
+  transform: translateY(-100%);
+}
+
+.slide-appear.slide-appear-active {
+  transform: translateY(0%);
+  transition: 0.4s;
 }
