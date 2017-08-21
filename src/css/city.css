@@ -1,0 +1,24 @@
+#city h3{
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    color: #666;
+    background: #eee;
+    line-height: 40px;
+    text-indent:10px;
+    font-weight: 100;
+}
+#city ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+}
+#city ul li{
+    width: 25%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #999;
+    
+}

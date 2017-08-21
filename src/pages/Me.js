@@ -1,12 +1,17 @@
 import React ,{Component} from 'react'
-
+import '../css/me.css'
 export default class Home extends Component{
 	constructor(){
 		super();
 	}
 	render(){
 		return (
-			<div class='page'>我的</div>
+			<div id="me" class='page'>
+				<div class="inputWrap"><input type="text" placeholder="输入手机号/邮箱" /></div>
+
+				<div class="inputWrap"><input type="password" placeholder="输入密码/验证码" /></div>
+				<button>登录</button>
+			</div> 
 		)
 	}
 }

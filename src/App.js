@@ -27,7 +27,8 @@ export default class App extends Component{
 			<BrowserRouter>
 				<div class="app">
 					<div class="cover" style={this.state.coverStyle} onClick={this.isShowMenu.bind(this)}></div>
-					<Header HeaderTitle={this.state.title} isShow={this.isShowMenu.bind(this)}></Header>
+					<Header HeaderTitle={this.state.title}
+							isShow={this.isShowMenu.bind(this)}></Header>
 					<Route path='/' render={({history,location})=>{
 						return <SliderMenu showMenu={this.state.showMenu}
 							headerTitle={this.getTitle.bind(this)}
@@ -53,5 +54,8 @@ export default class App extends Component{
 	}
 	getTitle(title){
 		this.setState({title:title});
+	}
+	getCityName(name){
+
 	}
 }

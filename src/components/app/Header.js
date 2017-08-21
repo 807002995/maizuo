@@ -1,9 +1,14 @@
 import React ,{Component} from 'react'
 import {Link} from 'react-router-dom'
 
+import store from '../../store'
 export default class Header extends Component{
 	constructor(){
 		super();
+		this.state = {
+			cityName : store.getState().cityName,
+			history
+		}
 	}
 	render(){
 		return(
@@ -13,7 +18,7 @@ export default class Header extends Component{
 				<p class="iconfont icon-person"><Link to='/me'></Link></p>
 				<p class="city">
 					<Link to='/city'>
-						深圳<span class="iconfont icon-arrow-down"></span>
+						{this.state.cityName}<span class="iconfont icon-arrow-down"></span>
 					</Link>
 				</p>
 			</nav>
@@ -21,5 +26,10 @@ export default class Header extends Component{
 	}
 	isShowMenu(){
 		this.props.isShow();
+	}
+	componentWillMount(){
+		store.subscribe(()=>{
+			this.setState({cityName:store.getState().cityName});
+		})
 	}
 }

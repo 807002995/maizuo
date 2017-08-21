@@ -1,0 +1,55 @@
+#me{
+    background: #eee;
+}
+#me input{
+    display: block;
+    width: 100%;
+    padding: 0;
+    border:0;
+    height: 30px;
+    font-size: 16px;
+    color: #666;
+    line-height: 30px;
+    text-indent: 10px;
+    background: #eee;
+}
+#me .inputWrap{
+    position:relative;
+    width: 80%;
+    margin: 50px 10%;
+    border-bottom: 1px solid #666;
+    height: 30px;
+    overflow:hidden;
+}
+#me .inputWrap:after{
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background: #666;
+}
+#me .inputWrap:before{
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    background: #666;
+}
+
+#me button{
+    width: 50%;
+    height: 40px;
+    border: none;
+    background:#f84;
+    border-radius:50px;
+    margin-left: 25%;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+}
