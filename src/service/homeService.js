@@ -23,14 +23,38 @@ function getHotData(){
         axios.get(API.homeHot+new Date().getTime()+"&page=1&count=5")
         .then((response)=>{
             resovle(response.data.data.films);
-            console.log(response.data.data.films)
         })
         .catch((err)=>{
             console.log(err);
         })
     })
 }
+//即将上映homeSoon
+//1503309237615&page=1&count=3
+function getSoonData(){
+    return new Promise((resolve,reject)=>{
+        axios.get(API.homeSoon+new Date().getTime()+'page=1&count=3')
+        .then((response)=>{
+            var arr = response.data.data.films;
+                var newArr = arr.map((item)=>{
+                var obj = {};
+                obj.imgPath = item.cover.origin;
+                obj.name = item.name;
+                obj.m = new Date(item.premiereAt).getMonth()+1;
+                obj.d = new Date(item.premiereAt).getDate();
+                return obj;
+            })
+            console.log(newArr);
+            resolve(newArr);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    })
+}
+
 export default{
     getBannerData,
-    getHotData
+    getHotData,
+    getSoonData
 }

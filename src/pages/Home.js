@@ -10,15 +10,18 @@ export default class Home extends Component{
 		this.state={
 			bannerData:[],
 			hotData:[],
-			topClass:'goTop'
+			topClass:'goTop',
+			soonData:[]
 		}
 	}
 	render(){
+		//banner的dom
 		var bannerList = this.state.bannerData.map((item)=>{
 			return (<div class="swiper-slide" key={item.id}>
 				<img src={item.imageUrl} alt={item.name}/>
 			</div>)
 		})
+		//hot
 		var hotList = this.state.hotData.map((item,index)=>{
 			return (
 				<li key={index}>
@@ -31,9 +34,20 @@ export default class Home extends Component{
 				</li>
 			)
 		})
+		let soonList = this.state.soonData.map((item,index)=>{
+			return (
+				<li key={index}>
+					<img src={item.imgPath} />
+					<div class="soonItem">
+						<p>{item.name}</p>
+						<span>{item.m}月{item.d}日上映</span>
+					</div>
+				</li>
+			);
+		})
 		return (
 			<div id="home" class='page'>
-				<span class={this.state.topClass}>返回顶部</span>
+				<span class={this.state.topClass} onClick={this.goTopJS.bind(this)}>返回顶部</span>
 				<div ref='banner' class="swiper-container banner">
 						<div class="swiper-wrapper">
 							{bannerList}
@@ -41,6 +55,12 @@ export default class Home extends Component{
 				</div>
 				<ul class="hot">
 					{hotList}
+					<div class="more">更多热映电影</div>
+				</ul>
+				<ul class="soon">
+					<h3>即将上映</h3>
+					{soonList}
+					<div class="more">更多即将上映电影</div>
 				</ul>
 			</div>
 		)
@@ -55,13 +75,23 @@ export default class Home extends Component{
 		service.getHotData().then((data)=>{
 			this.setState({hotData:data});
 		});
+		//请求soon数据
+		service.getSoonData().then((data)=>{
+			this.setState({soonData:data});
+		});
 	}
 	componentDidMount(){
 		bannerSwiper = new Swiper(this.refs.banner,{
 		});
-		document.body.onscroll = function(){
+		document.body.onscroll = ()=>{
 			if(document.body.scrollTop >= 200){
+				this.setState({topClass:'goTop '+'goTopActive'})
+			}else if(document.body.scrollTop < 200){
+				this.setState({topClass:'goTop'})
 			}
 		}
+	}
+	goTopJS(){
+		document.body.scrollTop = 0;
 	}
 }
