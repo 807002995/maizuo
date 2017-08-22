@@ -5,13 +5,14 @@ import '../css/home.css'
 
 let bannerSwiper = null;
 export default class Home extends Component{
-	constructor(){
+	constructor({history}){
 		super();
 		this.state={
 			bannerData:[],
 			hotData:[],
 			topClass:'goTop',
-			soonData:[]
+			soonData:[],
+			history
 		}
 	}
 	render(){
@@ -24,7 +25,7 @@ export default class Home extends Component{
 		//hot
 		var hotList = this.state.hotData.map((item,index)=>{
 			return (
-				<li key={index}>
+				<li key={index} onClick={this.goDetail.bind(this,item.id)}>
 					<img src={item.cover.origin} />
 					<div class="hotItem">
 						<p>{item.name}</p>
@@ -36,7 +37,7 @@ export default class Home extends Component{
 		})
 		let soonList = this.state.soonData.map((item,index)=>{
 			return (
-				<li key={index}>
+				<li key={index} onClick={this.goDetail.bind(this,item.id)}>
 					<img src={item.imgPath} />
 					<div class="soonItem">
 						<p>{item.name}</p>
@@ -93,5 +94,13 @@ export default class Home extends Component{
 	}
 	goTopJS(){
 		document.body.scrollTop = 0;
+	}
+	goDetail(id){
+		this.state.history.push({
+			pathname:'/detail',
+			query:{
+				id
+			}
+		});
 	}
 }

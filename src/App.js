@@ -11,6 +11,7 @@ import Home from './pages/Home.js'
 import Me from './pages/Me.js'
 import Card from './pages/Card.js'
 import City from './pages/City.js'
+import Detail from './pages/common/Detail.js'
 
 export default class App extends Component{
 	constructor(){
@@ -45,6 +46,7 @@ export default class App extends Component{
 					<Route path="/me" component={Me}/>
 					<Route path="/Card" component={Card}/>
 					<Route path="/city" component={City}/>
+					<Route path="/detail" component={Detail}/>
 				</div>
 			</BrowserRouter>
 		)

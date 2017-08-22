@@ -9,6 +9,9 @@ let homeSoon = '/v4/api/film/coming-soon?__t='
 let FilmCur = '/v4/api/film/now-playing?'
 //film即将上映
 let filmSoon = '/v4/api/film/coming-soon?'
+//详情页
+//3828?__t=1503404882449
+let filmDetail = '/v4/api/film/'
 
 
 
@@ -22,5 +25,6 @@ export default {
     homeHot,
     homeSoon,
     FilmCur,
-    filmSoon
+    filmSoon,
+    filmDetail
 }
