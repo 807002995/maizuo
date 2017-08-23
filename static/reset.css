@@ -35,3 +35,6 @@ a{font-size: 14px;color: #666;text-decoration: none}
 	bottom: -1px;
 	transform: scaley(.5);
 }
+input,button{
+	outline: none;
+}

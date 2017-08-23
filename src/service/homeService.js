@@ -9,6 +9,7 @@ function getBannerData(){
                 getBannerData();
             }
             else{
+                window.sessionStorage.setItem('bannerData',JSON.stringify(response.data.data.billboards));
                 resovle(response.data.data.billboards);
             }
         }).catch((err)=>{

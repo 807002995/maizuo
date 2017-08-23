@@ -69,10 +69,15 @@ export default class Home extends Component{
 	}
 	componentWillMount(){
 		//请求banner数据
-		service.getBannerData().then((data)=>{
-			this.setState({bannerData:data});
-			bannerSwiper.update();
-		})
+		console.log(window.sessionStorage.getItem('bannerData'))
+		if(window.sessionStorage.getItem('bannerData') == null ){
+			service.getBannerData().then((data)=>{
+				this.setState({bannerData:data});
+				bannerSwiper.update();
+			})
+		}else{
+			this.setState({bannerData:JSON.parse(window.sessionStorage.getItem('bannerData'))});
+		}
 		//请求hot数据
 		service.getHotData().then((data)=>{
 			this.setState({hotData:data});
