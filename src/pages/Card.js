@@ -1,4 +1,5 @@
 import React ,{Component} from 'react'
+import store from '../store'
 
 export default class Home extends Component{
 	constructor(){
@@ -6,7 +7,15 @@ export default class Home extends Component{
 	}
 	render(){
 		return (
-			<div class='page'>卖座卡</div>
+			<div id="card" class='page'>
+				
+			</div>
 		)
+	}
+	componentWillMount(){
+		store.dispatch({
+            type: 'changeHeaderTitle',
+            val : '查询/绑定/激活卖座卡'
+        });
 	}
 }

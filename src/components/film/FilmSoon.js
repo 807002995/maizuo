@@ -1,11 +1,14 @@
 import React , {Component} from 'react'
 import service from '../../service/filmService.js'
 
+import store from '../../store'
+
 export default class FilmCur extends Component{
     constructor(){
         super();
         this.state = {
-            curData : [],
+            curData : [],           
+            his:store.getState().filmHistory,
             topClass:'goTop',
             page:1,
             count:7,
@@ -15,7 +18,7 @@ export default class FilmCur extends Component{
     render(){
         let cur = this.state.curData.map((item,index)=>{
             return(
-                <li key={index}>
+                <li key={index} onClick={this.goDetail.bind(this,item.id)}>
                     <img src={item.imgPath}/>
                     <div class="curItem">
                         <p>{item.name}</p>
@@ -34,6 +37,9 @@ export default class FilmCur extends Component{
         service.getSoonData(this.state.page,this.state.count).then((data)=>{
             this.setState({curData:data});
         });
+        store.subscribe(()=>{
+            this.setState({his : store.getState().filmHistory });
+		})
     }
     //100+128
     componentDidMount(){
@@ -51,10 +57,8 @@ export default class FilmCur extends Component{
             document.body.scrollTop
             if(isTrue){
                 if(bodyTop >= ulElHeight * (this.state.page-1) + 228 ){
-                    console.log(isTrue);
                     this.setState({page:this.state.page+1})
                     service.getSoonData(this.state.page,this.state.count).then((data)=>{
-                        console.log(data.length);
                         if(!data.length == 0){
                             var arr = this.state.curData;
                             data.map((item,index)=>{
@@ -74,5 +78,14 @@ export default class FilmCur extends Component{
 	}
 	goTopJS(){
 		document.body.scrollTop = 0;
+    }
+    goDetail(id){
+        console.log(this.state.his);
+		this.state.his.history.push({
+			pathname:'/detail',
+			query:{
+				id
+			}
+		});
 	}
 }

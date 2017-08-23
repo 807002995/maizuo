@@ -1,5 +1,6 @@
 import React ,{Component} from 'react'
 import service from '../service/homeService.js'
+import store from '../store'
 
 import '../css/home.css'
 
@@ -80,7 +81,12 @@ export default class Home extends Component{
 		service.getSoonData().then((data)=>{
 			this.setState({soonData:data});
 		});
+		store.dispatch({
+            type: 'changeHeaderTitle',
+            val : '卖座电影'
+        });
 	}
+	
 	componentDidMount(){
 		bannerSwiper = new Swiper(this.refs.banner,{
 		});

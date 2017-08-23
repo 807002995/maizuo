@@ -18,7 +18,6 @@ export default class App extends Component{
 		super();
 		this.state = {
 			showMenu:false,
-			title: '卖座电影',
 			coverStyle : ''
 		}
 	}
@@ -28,11 +27,9 @@ export default class App extends Component{
 			<BrowserRouter>
 				<div class="app">
 					<div class="cover" style={this.state.coverStyle} onClick={this.isShowMenu.bind(this)}></div>
-					<Header HeaderTitle={this.state.title}
-							isShow={this.isShowMenu.bind(this)}></Header>
+					<Header isShow={this.isShowMenu.bind(this)}></Header>
 					<Route path='/' render={({history,location})=>{
 						return <SliderMenu showMenu={this.state.showMenu}
-							headerTitle={this.getTitle.bind(this)}
 							isShow={this.isShowMenu.bind(this)}
 							pathname={location.pathname}>
 						</SliderMenu>
@@ -53,9 +50,6 @@ export default class App extends Component{
 	}
 	isShowMenu(){
 		this.setState({showMenu : !this.state.showMenu});
-	}
-	getTitle(title){
-		this.setState({title:title});
 	}
 	getCityName(name){
 

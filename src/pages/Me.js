@@ -1,5 +1,6 @@
 import React ,{Component} from 'react'
 import '../css/me.css'
+import store from '../store'
 export default class Home extends Component{
 	constructor(){
 		super();
@@ -13,5 +14,11 @@ export default class Home extends Component{
 				<button>登录</button>
 			</div> 
 		)
+	}
+	componentWillMount(){
+		store.dispatch({
+            type: 'changeHeaderTitle',
+            val : '登录'
+        });
 	}
 }

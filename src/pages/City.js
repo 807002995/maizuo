@@ -62,6 +62,10 @@ export default class City extends Component{
         service.getCityData().then((data)=>{
             this.setState({cityList:data});
         })
+        store.dispatch({
+            type: 'changeHeaderTitle',
+            val : '选择城市'
+        });
     }
     goHome(name){
         store.dispatch({

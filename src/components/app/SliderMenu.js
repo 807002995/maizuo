@@ -30,7 +30,6 @@ export default class SliderMenu extends Component{
 		)
 	}
 	goPage(item){
-		this.props.headerTitle(item.header);
 		this.props.isShow();
 	}
 }

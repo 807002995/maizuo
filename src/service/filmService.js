@@ -41,7 +41,6 @@ function getSoonData(page,count){
                 obj.day = new Date(item.premiereAt).getDay();
                 return obj;
             })
-            console.log(newArr);
             resolve(newArr);
         })
         .catch((err)=>{

@@ -1,10 +1,11 @@
 import React , {Component} from 'react'
 import service from '../../service/filmService.js'
-
+import store from '../../store'
 export default class FilmCur extends Component{
     constructor(){
         super();
         this.state = {
+            his:store.getState().filmHistory,
             curData : [],
             topClass:'goTop',
             page:1,
@@ -14,7 +15,7 @@ export default class FilmCur extends Component{
     render(){
         let cur = this.state.curData.map((item,index)=>{
             return(
-                <li key={index}>
+                <li key={index} onClick={this.goDetail.bind(this,item.id)}>
                     <img src={item.imgPath}/>
                     <div class="curItem">
                         <p>{item.name}</p>
@@ -34,6 +35,9 @@ export default class FilmCur extends Component{
         service.getCurData(this.state.page,this.state.count).then((data)=>{
             this.setState({curData:data});
         });
+        store.subscribe(()=>{
+            this.setState({his : store.getState().filmHistory });
+		})
     }
     //100+128
     componentDidMount(){
@@ -71,8 +75,17 @@ export default class FilmCur extends Component{
 
         }
         
-	}
+    }
 	goTopJS(){
 		document.body.scrollTop = 0;
+    }
+    goDetail(id){
+        console.log(this.state.his);
+		this.state.his.history.push({
+			pathname:'/detail',
+			query:{
+				id
+			}
+		});
 	}
 }

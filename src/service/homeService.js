@@ -40,6 +40,7 @@ function getSoonData(){
                 var obj = {};
                 obj.imgPath = item.cover.origin;
                 obj.name = item.name;
+                obj.id = item.id;
                 obj.m = new Date(item.premiereAt).getMonth()+1;
                 obj.d = new Date(item.premiereAt).getDate();
                 return obj;

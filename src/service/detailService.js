@@ -12,18 +12,12 @@ function getDetailData(id){
             obj.m = new Date(item.premiereAt).getMonth()+1;
             obj.d = new Date(item.premiereAt).getDate();
             obj.director = item.director;
-            obj.actors1 = item.actors[0].name;
-            obj.actors2 = item.actors[1].name;
-            obj.actors3 = item.actors[2].name;
-            obj.actors4 = item.actors[3].name;
-            obj.actors5 = item.actors[4].name;
             obj.imgPath = item.cover.origin;
             obj.nation = item.nation;
             obj.language = item.language;
             obj.synopsis = item.synopsis;
             obj.category = item.category;
-            console.log(obj);
-            resovle(obj);
+            resovle([obj,item.actors]);
         })
         .catch((err)=>{
             console.log(err);
