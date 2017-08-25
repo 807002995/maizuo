@@ -5,7 +5,6 @@ function getCityData(){
     return new Promise((resovle,reject)=>{
         axios.get(API.cityData)
         .then((response)=>{
-            console.log(response.data.data.cities)
             var data = response.data.data.cities;
             var arr = [];
             for(var i=0; i<26; i++){
@@ -22,7 +21,6 @@ function getCityData(){
                 })
                 
             })
-            console.log(arr);
             resovle(arr)
         }).catch((err)=>{
             console.log(err);
